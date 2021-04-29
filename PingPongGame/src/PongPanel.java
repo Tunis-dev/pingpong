@@ -17,7 +17,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private final static Color BACKGROUND_COLOUR = Color.BLACK;
 	private final static int TIMER_DELAY = 5;
 	private final static int BALL_MOVEMENT_SPEED = 2;
-	private final static int POINTS_TO_WIN = 3;
+	private final static int BALL_MOVEMENT_SPEED_FAST = 3;
+	private final static int POINTS_TO_WIN = 5;
 	private final static int SCORE_TEXT_X = 100;
 	private final static int SCORE_TEXT_Y = 100;
 	private final static int SCORE_FONT_SIZE = 50;
@@ -94,6 +95,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		if(ball.getYPosition() <= 0 || ball.getYPosition() >= getHeight() - ball.getHeight()) {
 			// Hit top or bottom of screen
 			ball.setYVelocity(-ball.getYVelocity());
+		}
+		if(player1Score + player2Score == 2) {
+			ball.setXVelocity(BALL_MOVEMENT_SPEED_FAST);
+			ball.setYVelocity(BALL_MOVEMENT_SPEED_FAST);
 		}
 	}
 	
